@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+<style>
+    body{
+        background: orange;
+        color: blue;
+    }
+    h1{
+        text-align: center;
+        color: red;
+        font-size: 30px;
+        font-weight: bold;
+        background: lawngreen;
+    }
+    form{
+        text-align: center;
+    }
+
+</style>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-2 col-md-12">
+        <h1>Confirm Your Details...</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ fform1 }}<br>
+                <center>
+                <input type="submit" value="Submit" class="btn btn-success">&nbsp&nbsp&nbsp
+                <input type="reset" value="Clear" class="btn btn-danger">
+                </center>
+            </form>
+            {% if feedback1 %}
+                <h2>Available Feedbacks are...</h2>
+                {% for fb in feedback1 %}
+                Name:{{ fb.Name.capitalize }}<br>
+                Rating:{{ fb.Rating }}<br>
+                Mobile:{{ fb.Mobile }}<br>
+                Email:{{ fb.Email }}<br>
+                Date:{{ fb.date }}<br>
+                Feedback:{{ fb.Feeback }}<br><br>
+                {% endfor %}
+                {% else %}
+                <h2>Feedbacks are not available</h2>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
